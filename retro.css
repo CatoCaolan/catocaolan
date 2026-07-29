@@ -54,6 +54,30 @@
   .welcome .deco{display:block;line-height:1.4}
   .welcome .wtitle{display:block}
 
+  /* Twinkling sparkles. Every colour below is already in the palette and every
+     one of them is a documented AA pass on this background, so the banner never
+     dips below contrast mid-cycle — the sparkles are decorative anyway and are
+     aria-hidden, but the text beside them is not, and a colour animation that
+     wanders into low contrast would be a real defect rather than a flourish.
+
+     The delays are NEGATIVE on purpose: a negative delay starts the animation
+     already part-way through, so the six begin out of phase instead of all
+     flashing together on page load. Six sparkles pulsing in lockstep reads as
+     a broken loop; out of phase it reads as sparkle. */
+  @keyframes twinkle{
+    0%,100%{color:var(--cyan)}
+    20%    {color:var(--gold)}
+    40%    {color:var(--pink)}
+    60%    {color:var(--lime)}
+    80%    {color:var(--star)}
+  }
+  .welcome .deco .sparkle{animation:twinkle 4.4s linear infinite}
+  .welcome .deco:first-of-type .sparkle:nth-child(2){animation-delay:-1.4s}
+  .welcome .deco:first-of-type .sparkle:nth-child(3){animation-delay:-2.9s}
+  .welcome .deco:last-of-type  .sparkle:nth-child(1){animation-delay:-0.7s}
+  .welcome .deco:last-of-type  .sparkle:nth-child(2){animation-delay:-2.1s}
+  .welcome .deco:last-of-type  .sparkle:nth-child(3){animation-delay:-3.6s}
+
   .welcome{
     border:4px ridge var(--pink);
     background:linear-gradient(180deg,#26064a,#0a0a2e);
@@ -183,6 +207,7 @@
   @media (prefers-reduced-motion:reduce){
     .marquee p{animation:none;padding-left:0;white-space:normal;display:block;text-align:center}
     .barricade{animation:none}
+    .welcome .deco .sparkle{animation:none;color:var(--cyan)}
     *{transition:none !important}
   }
 
