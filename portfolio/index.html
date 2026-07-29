@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://catocaolan.com/portfolio/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Portfolio — Caolan McArthur">
-<meta property="og:description" content="Thirteen shipped games, eight film credits. Games, film, and whatever lands next.">
+<meta property="og:description" content="Thirteen shipped games, eight film credits. Games, film, ever growing.">
 <meta property="og:url" content="https://catocaolan.com/portfolio/">
 <meta property="og:image" content="https://catocaolan.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -55,13 +55,22 @@
 
 <link rel="stylesheet" href="/retro.css">
 <style>
-  /* ⚑ EVERY RIGHT-HAND ELEMENT IS FIXED-WIDTH, and that is load-bearing —
-     the same trap retro.css already documents on .menu .label. These are
-     flex rows, so a right-hand element that sizes to its own content drags
-     everything left of it to a different x on every row. "YOUTUBE" is seven
-     characters and "VIMEO" is five, so the year column visibly stepped in
-     and out down the list until .platform got a min-width. Fixing the text
-     alignment would not have helped; the box itself has to stop resizing. */
+  /* ⚑ THE PLATFORM BADGE LIVES INSIDE .stats, NOT BESIDE IT. That is the fix,
+     and it is structural rather than cosmetic.
+
+     These are flex rows. While the badge was a sibling of .label, its width
+     competed with the title's for the same horizontal space — and "YOUTUBE"
+     is seven characters where "VIMEO" is five, so the column stepped in and
+     out down the list and the titles lost room to a box that was not even
+     about them. A min-width on the badge made the stepping stop, but the
+     titles were still paying for it, which is what Caolan saw on his mobile
+     pass: "the vimeo icons still slightly shift the text... the titles are
+     pretty scrunched as is."
+
+     His fix, and it is the right one: put the badge ABOVE the year inside the
+     right-hand stack. Now the title row has exactly two children — label and
+     stats — so nothing about the platform can reach the title at all. The
+     min-widths below are now only for tidiness, not for correctness. */
   .film .label{display:flex;flex-direction:column;gap:.15rem}
   .film .role{
     color:#9a9ac8;font-weight:normal;font-size:.78rem;
@@ -86,6 +95,7 @@
     color:#000;background:var(--cyan);padding:.1rem .3rem;
     border-radius:3px;font-size:.7rem;letter-spacing:.06em;
     min-width:5.4rem;text-align:center;flex:0 0 auto;
+    margin-bottom:.15rem;
   }
 
   .work{margin:0 0 .5rem}
@@ -126,7 +136,7 @@
 
   <div class="welcome">
     <span class="sparkle">&#10022;</span> &#10022; &#10022;
-    THE PORTFOLIO
+    PORTFOLIO
     &#10022; &#10022; <span class="sparkle">&#10022;</span>
   </div>
 
@@ -143,7 +153,7 @@
   </nav>
 
   <h1>PORTFOLIO</h1>
-  <p class="tagline">games &middot; film &middot; and whatever lands next</p>
+  <p class="tagline">games &middot; film &middot; ever growing</p>
 
   <hr class="rule">
 
@@ -180,64 +190,56 @@
         <a href="https://www.youtube.com/watch?v=Gtao4yNVB8g">
           <span class="arrow">&#9658;</span>
           <span class="label">A Second Shift<span class="role">Actor &middot; Writer</span></span>
-          <span class="stats"><span class="yr">2023 &middot; 7:50</span><span class="views">595 views</span></span>
-          <span class="platform">YOUTUBE</span>
+          <span class="stats"><span class="platform">YOUTUBE</span><span class="yr">2023 &middot; 7:50</span><span class="views">595 views</span></span>
         </a>
       </li>
       <li>
         <a href="https://vimeo.com/247854780">
           <span class="arrow">&#9658;</span>
           <span class="label">The Only Order<span class="role">Actor &middot; Writer &middot; Producer &mdash; narrative short</span></span>
-          <span class="stats"><span class="yr">2017 &middot; 14:47</span><span class="views">274 views</span></span>
-          <span class="platform">VIMEO</span>
+          <span class="stats"><span class="platform">VIMEO</span><span class="yr">2017 &middot; 14:47</span><span class="views">274 views</span></span>
         </a>
       </li>
       <li>
         <a href="https://www.youtube.com/watch?v=B9LyXIt8i7U">
           <span class="arrow">&#9658;</span>
           <span class="label">Why do marshmallows always turn to the dark side?<span class="role">Writer</span></span>
-          <span class="stats"><span class="yr">2017 &middot; 0:18</span><span class="views">35.2K views</span></span>
-          <span class="platform">YOUTUBE</span>
+          <span class="stats"><span class="platform">YOUTUBE</span><span class="yr">2017 &middot; 0:18</span><span class="views">35.2K views</span></span>
         </a>
       </li>
       <li>
         <a href="https://vimeo.com/176195913">
           <span class="arrow">&#9658;</span>
           <span class="label">The Tale of the Leaky Engine and the Sloppy Troll<span class="role">Actor &middot; Writer &middot; Producer &mdash; 48 Hour Film Fest</span></span>
-          <span class="stats"><span class="yr">2016 &middot; 6:21</span><span class="views">134 views</span></span>
-          <span class="platform">VIMEO</span>
+          <span class="stats"><span class="platform">VIMEO</span><span class="yr">2016 &middot; 6:21</span><span class="views">134 views</span></span>
         </a>
       </li>
       <li>
         <a href="https://www.youtube.com/watch?v=oRcZZwbbHIE">
           <span class="arrow">&#9658;</span>
           <span class="label">The Defense of Sir Bedivere<span class="role">Actor &middot; Writer</span></span>
-          <span class="stats"><span class="yr">2016 &middot; 1:11</span><span class="views">2.9K views</span></span>
-          <span class="platform">YOUTUBE</span>
+          <span class="stats"><span class="platform">YOUTUBE</span><span class="yr">2016 &middot; 1:11</span><span class="views">2.9K views</span></span>
         </a>
       </li>
       <li>
         <a href="https://www.youtube.com/watch?v=7DTgU96cNpk">
           <span class="arrow">&#9658;</span>
           <span class="label">Lady Liberty Lager<span class="role">Actor &middot; Writer</span></span>
-          <span class="stats"><span class="yr">2015 &middot; 2:16</span><span class="views">5.6K views</span></span>
-          <span class="platform">YOUTUBE</span>
+          <span class="stats"><span class="platform">YOUTUBE</span><span class="yr">2015 &middot; 2:16</span><span class="views">5.6K views</span></span>
         </a>
       </li>
       <li>
         <a href="https://www.youtube.com/watch?v=bpk1RwswDKk">
           <span class="arrow">&#9658;</span>
           <span class="label">Ivory Drive &mdash; &ldquo;In Dark&rdquo;, official music video<span class="role">Puppeteer &middot; Assistant Camera</span></span>
-          <span class="stats"><span class="yr">2015 &middot; 3:48</span><span class="views">3.2K views</span></span>
-          <span class="platform">YOUTUBE</span>
+          <span class="stats"><span class="platform">YOUTUBE</span><span class="yr">2015 &middot; 3:48</span><span class="views">3.2K views</span></span>
         </a>
       </li>
       <li>
         <a href="https://www.youtube.com/watch?v=NuPLapwY44Q">
           <span class="arrow">&#9658;</span>
           <span class="label">Snacking with Homer Simpson<span class="role">Actor &middot; Producer</span></span>
-          <span class="stats"><span class="yr">2015 &middot; 0:09</span><span class="views">5.9M views</span></span>
-          <span class="platform">YOUTUBE</span>
+          <span class="stats"><span class="platform">YOUTUBE</span><span class="yr">2015 &middot; 0:09</span><span class="views">5.9M views</span></span>
         </a>
       </li>
     </ul>
