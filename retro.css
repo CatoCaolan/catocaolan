@@ -39,6 +39,21 @@
   a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
   /* ---------- the big welcome bar ---------- */
+  /* ⚑ THE DECORATIONS SIT ON THEIR OWN LINES, AT EVERY WIDTH.
+     Caolan's mobile pass, 2026-07-29: "header's not centered on phone.
+     looks a bit clunky." The banner was one inline run — sparkles, title,
+     sparkles — so as soon as it was too narrow it broke wherever it happened
+     to fit, orphaning "CORNER ✦ ✦ ✦" onto a second line and leaving the
+     leading sparkles stranded at the far left. Centred text, ragged result.
+
+     Deliberately NOT fixed with a breakpoint. I cannot render below ~500px
+     CSS width on this machine (Chrome for Windows clamps its window), so any
+     media query I picked would be a guess I could not check. Stacking them
+     always has no breakpoint to get wrong, reads as a proper banner, and is
+     verifiable at every width I CAN reach. */
+  .welcome .deco{display:block;line-height:1.4}
+  .welcome .wtitle{display:block}
+
   .welcome{
     border:4px ridge var(--pink);
     background:linear-gradient(180deg,#26064a,#0a0a2e);
