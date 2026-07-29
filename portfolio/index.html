@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Video portfolio &mdash; Cato's Corner</title>
-<meta name="description" content="Film and video work by Caolan McArthur — actor, writer, producer, assistant director. Eight pieces, 2015 to 2023, mostly with CinemaRaven. Includes the fifteen-minute narrative short The Only Order.">
+<title>Portfolio &mdash; Cato's Corner</title>
+<meta name="description" content="The work of Caolan McArthur — thirteen games shipped on iOS and Android with MapChat, and eight film credits as actor, writer, producer and assistant director.">
 <link rel="canonical" href="https://catocaolan.com/portfolio/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Video portfolio — Caolan McArthur">
-<meta property="og:description" content="Film and video work — actor, writer, producer, assistant director. Eight pieces, 2015 to 2023.">
+<meta property="og:title" content="Portfolio — Caolan McArthur">
+<meta property="og:description" content="Thirteen shipped games, eight film credits. Games, film, and whatever lands next.">
 <meta property="og:url" content="https://catocaolan.com/portfolio/">
 <meta property="og:image" content="https://catocaolan.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -21,47 +21,61 @@
   ============================================================
   catocaolan.com/portfolio  ·  built by Q, 2026
 
+  ⚑ BUILT TO GROW. This page is a stack of <section class="work">
+  blocks, each one a heading plus .menu lists. Adding a category
+  later — modules, code, writing — is a copy of one block, not a
+  redesign. Caolan's instruction, 2026-07-29: "I don't see a
+  reason to limit it past 'portfolio'." Do not narrow it back to
+  one medium; it was called VIDEO PORTFOLIO once and that name
+  quietly scoped the games out for a day.
+
   ⚑ NO EMBEDS AND NO THUMBNAILS, ON PURPOSE.
   A YouTube <iframe> sets cookies and reports the visitor to
   Google before they press anything, and a hotlinked poster
   frame does the same over an <img>. This site's ticker says
   "no cookies, no trackers, no analytics" and its footer wears
-  a NO TRACKERS badge. Embedding would have made both of those
-  false on the busiest page. So these are links: nothing loads
-  from anyone else's server until the visitor chooses to go.
-  Titles came from each platform's oEmbed endpoint; dates from
-  each video's own playerMicroformatRenderer block. Neither was
-  typed from memory. The microformat block describes only the
-  video being viewed, so a sidebar recommendation cannot leak
-  its date into this list - that was checked, not assumed.
+  a NO TRACKERS badge. Embedding would have made both false on
+  the busiest page. So these are links: nothing loads from
+  anyone else's server until the visitor chooses to go.
+
+  PROVENANCE — none of this was typed from memory:
+  · Film titles from each platform's oEmbed endpoint; dates and
+    runtimes from each video's own playerMicroformatRenderer
+    block, which describes only the video being viewed, so a
+    sidebar recommendation cannot leak into the list.
+  · YouTube view counts read off each page. The two Vimeo counts
+    were supplied by Caolan from his dashboard — Vimeo exposes
+    no plays without an API key.
+  · Game names, taglines and player counts read off screenshots
+    of the live app, counted one by one against the CV list.
+    Thirteen live, and they matched exactly.
+  · Store links taken from mapchat.social itself and verified 200.
   ============================================================
 -->
 
 <link rel="stylesheet" href="/retro.css">
 <style>
-  /* Page-local: the film rows carry more than the shared .menu has slots for.
-
-     ⚑ EVERY RIGHT-HAND ELEMENT HERE IS FIXED-WIDTH, and that is load-bearing —
-     the same trap retro.css already documents on .menu .label. These are flex
-     rows, so a right-hand element that sizes to its own content drags everything
-     left of it to a different x on every row. "YOUTUBE" is seven characters and
-     "VIMEO" is five, so the year column visibly stepped in and out down the list.
-     Fixing the text alignment would not have helped; the box itself has to stop
-     changing size. Hence min-width on .platform and .stats. */
+  /* ⚑ EVERY RIGHT-HAND ELEMENT IS FIXED-WIDTH, and that is load-bearing —
+     the same trap retro.css already documents on .menu .label. These are
+     flex rows, so a right-hand element that sizes to its own content drags
+     everything left of it to a different x on every row. "YOUTUBE" is seven
+     characters and "VIMEO" is five, so the year column visibly stepped in
+     and out down the list until .platform got a min-width. Fixing the text
+     alignment would not have helped; the box itself has to stop resizing. */
   .film .label{display:flex;flex-direction:column;gap:.15rem}
   .film .role{
     color:#9a9ac8;font-weight:normal;font-size:.78rem;
     letter-spacing:.04em;text-transform:uppercase;
   }
+  .menu a:hover .role,.menu a:focus-visible .role,
+  .menu span.dead .role{color:inherit}
   .menu a:hover .role,.menu a:focus-visible .role{color:var(--star)}
 
   .film .stats{
     display:flex;flex-direction:column;align-items:flex-end;gap:.1rem;
     min-width:7.5rem;flex:0 0 auto;text-align:right;
   }
-  .film .yr{
-    color:var(--gold);font-size:.85rem;font-variant-numeric:tabular-nums;
-  }
+  .film .yr{color:var(--gold);font-size:.85rem;font-variant-numeric:tabular-nums}
   .film .views{
     color:#9a9ac8;font-weight:normal;font-size:.72rem;
     font-variant-numeric:tabular-nums;letter-spacing:.03em;
@@ -74,12 +88,24 @@
     min-width:5.4rem;text-align:center;flex:0 0 auto;
   }
 
-  .asof{
-    color:#9a9ac8;font-size:.78rem;margin:.9rem 0 0;text-align:right;
-  }
+  /* Games rows carry no outbound link of their own — the store buttons above
+     them are the way in — so they are span.dead, styled to read as content
+     rather than as a disabled control. */
+  .menu span.dead.item{cursor:default;border-style:solid;border-color:var(--bevel-hi)}
+  .menu span.dead.item .label{color:var(--cyan)}
 
-  /* Narrow screens: the fixed columns would crowd the title, so let the row
-     stack and the stats fall back to the left edge with everything else. */
+  .work{margin:0 0 .5rem}
+  .sect{
+    color:var(--gold);font-family:monospace;font-weight:bold;
+    letter-spacing:.1em;margin:2rem 0 .35rem;font-size:1.15rem;
+  }
+  .sub{
+    color:var(--pink);font-family:monospace;font-weight:bold;
+    letter-spacing:.08em;margin:1.4rem 0 .5rem;font-size:.9rem;
+  }
+  .asof{color:#9a9ac8;font-size:.78rem;margin:.9rem 0 0;text-align:right}
+  .lede{color:var(--text);margin:.4rem 0 1rem}
+
   @media (max-width:30rem){
     .film .stats{min-width:0;align-items:flex-start;text-align:left}
     .platform{min-width:0}
@@ -92,7 +118,7 @@
 
   <div class="welcome">
     <span class="sparkle">&#10022;</span> &#10022; &#10022;
-    THE VIDEO PORTFOLIO
+    THE PORTFOLIO
     &#10022; &#10022; <span class="sparkle">&#10022;</span>
   </div>
 
@@ -108,155 +134,182 @@
     </ul>
   </nav>
 
-  <h1>VIDEO PORTFOLIO</h1>
-  <p class="tagline">in front of the camera &middot; behind it &middot; and writing the thing first</p>
+  <h1>PORTFOLIO</h1>
+  <p class="tagline">games &middot; film &middot; and whatever lands next</p>
 
   <hr class="rule">
 
-  <ul class="menu film">
-    <li>
-      <a href="https://www.youtube.com/watch?v=Gtao4yNVB8g">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          A Second Shift
-          <span class="role">Actor &middot; Writer</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2023 &middot; 7:50</span>
-          <span class="views">595 views</span>
-        </span>
-        <span class="platform">YOUTUBE</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://vimeo.com/247854780">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          The Only Order
-          <span class="role">Actor &middot; Writer &middot; Producer &mdash; narrative short</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2017 &middot; 14:47</span>
-          <span class="views">274 views</span>
-        </span>
-        <span class="platform">VIMEO</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=B9LyXIt8i7U">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          Why do marshmallows always turn to the dark side?
-          <span class="role">Writer</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2017 &middot; 0:18</span>
-          <span class="views">35.2K views</span>
-        </span>
-        <span class="platform">YOUTUBE</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://vimeo.com/176195913">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          The Tale of the Leaky Engine and the Sloppy Troll
-          <span class="role">Actor &middot; Writer &middot; Producer &mdash; 48 Hour Film Fest</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2016 &middot; 6:21</span>
-          <span class="views">134 views</span>
-        </span>
-        <span class="platform">VIMEO</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=oRcZZwbbHIE">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          The Defense of Sir Bedivere
-          <span class="role">Actor &middot; Writer</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2016 &middot; 1:11</span>
-          <span class="views">2.9K views</span>
-        </span>
-        <span class="platform">YOUTUBE</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=7DTgU96cNpk">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          Lady Liberty Lager
-          <span class="role">Actor &middot; Writer</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2015 &middot; 2:16</span>
-          <span class="views">5.6K views</span>
-        </span>
-        <span class="platform">YOUTUBE</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=bpk1RwswDKk">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          Ivory Drive &mdash; &ldquo;In Dark&rdquo;, official music video
-          <span class="role">Puppeteer &middot; Assistant Camera</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2015 &middot; 3:48</span>
-          <span class="views">3.2K views</span>
-        </span>
-        <span class="platform">YOUTUBE</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=NuPLapwY44Q">
-        <span class="arrow">&#9658;</span>
-        <span class="label">
-          Snacking with Homer Simpson
-          <span class="role">Actor &middot; Producer</span>
-        </span>
-        <span class="stats">
-          <span class="yr">2015 &middot; 0:09</span>
-          <span class="views">5.9M views</span>
-        </span>
-        <span class="platform">YOUTUBE</span>
-      </a>
-    </li>
-  </ul>
+  <!-- ===================== GAMES ===================== -->
+  <section class="work" aria-labelledby="games">
+    <h2 class="sect" id="games">&gt;&gt;&gt; GAMES &lt;&lt;&lt;</h2>
 
-  <!-- Big numbers rounded on purpose: exact counts rot the day after they are
-       written and a static page cannot refresh them, so 5.9M stays true far
-       longer than 5,907,965. Small ones are exact because rounding them would
-       lose more than it saves.
-       Provenance: YouTube counts read from each video's own page. Vimeo does
-       not expose plays without an API key, so those two (134, 274) were
-       supplied by Caolan from his own dashboard. -->
-  <p class="asof">View counts as of 29 July 2026</p>
+    <p class="lede">Thirteen games, designed, built and shipped end to end with an agent fleet
+      and no coding background when I started. They live inside <strong>MapChat</strong>, on iOS
+      and Android.</p>
+
+    <p class="lede">Around them sits <strong>Morpho</strong>, the progression layer &mdash; a
+      hub, an in-game economy, daily challenges, seasons and leaderboards. You earn
+      <strong>Goo</strong>, it fills a chrysalis, and the chrysalis becomes a butterfly in your
+      trophy case. The nightly challenges are the part I am proudest of:
+      <em>step in anywhere</em>, <em>step in somewhere people already are</em>,
+      <em>wave at someone new</em>.</p>
+
+    <ul class="menu">
+      <li>
+        <a href="https://apps.apple.com/us/app/mapchat-social/id6761695226">
+          <span class="arrow">&#9658;</span>
+          <span class="label">GET MAPCHAT &mdash; APP STORE</span>
+          <span class="go">GO&nbsp;&#8250;</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://play.google.com/store/apps/details?id=com.mapchat.mobile">
+          <span class="arrow">&#9658;</span>
+          <span class="label">GET MAPCHAT &mdash; GOOGLE PLAY</span>
+          <span class="go">GO&nbsp;&#8250;</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="sub">PARTY GAMES</p>
+    <ul class="menu film">
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Imprompto<span class="role">Quick-fire prompts, instant spark</span></span><span class="stats"><span class="yr">featured</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Emoji Off<span class="role">Say it in emoji</span></span><span class="stats"><span class="yr">2&ndash;8 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Pair Play<span class="role">How in sync are you?</span></span><span class="stats"><span class="yr">2 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Trivia Night<span class="role">Beat the table to the answer</span></span><span class="stats"><span class="yr">2&ndash;8 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Same Page<span class="role">Land on the same answer</span></span><span class="stats"><span class="yr">3&ndash;8 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Crowd Oracle<span class="role">Vote the room, not your heart</span></span><span class="stats"><span class="yr">3&ndash;8 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Spill It Out<span class="role">Bluff, vote, chase the laugh</span></span><span class="stats"><span class="yr">3&ndash;8 players</span></span></span></li>
+    </ul>
+
+    <p class="sub">CARD GAMES</p>
+    <ul class="menu film">
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Blackjack<span class="role">Beat the dealer to 21</span></span><span class="stats"><span class="yr">1&ndash;7 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Spades<span class="role">Partner up, call your tricks</span></span><span class="stats"><span class="yr">4 players &middot; teams</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Poker<span class="role">Texas Hold&rsquo;em &mdash; bluff, bet, read the room</span></span><span class="stats"><span class="yr">2&ndash;8 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Gin Rummy<span class="role">Race to a clean hand</span></span><span class="stats"><span class="yr">2 players</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Whist<span class="role">Team up, take the tricks</span></span><span class="stats"><span class="yr">4 players &middot; teams</span></span></span></li>
+      <li><span class="dead item"><span class="arrow">&#9658;</span><span class="label">Hearts<span class="role">Dodge the points and the Queen</span></span><span class="stats"><span class="yr">4 players</span></span></span></li>
+    </ul>
+
+    <p class="sub">IN THE PIPE</p>
+    <ul class="menu">
+      <li><span class="dead"><span class="arrow">&#9658;</span><span class="label">Rummy</span><span class="soon">COMING SOON</span></span></li>
+      <li><span class="dead"><span class="arrow">&#9658;</span><span class="label">Cribbage</span><span class="soon">COMING SOON</span></span></li>
+      <li><span class="dead"><span class="arrow">&#9658;</span><span class="label">Court Is In Session</span><span class="soon">COMING SOON</span></span></li>
+      <li><span class="dead"><span class="arrow">&#9658;</span><span class="label">Profile Match</span><span class="soon">COMING SOON</span></span></li>
+    </ul>
+  </section>
 
   <hr class="rule">
 
-  <ul class="menu">
-    <li>
-      <a href="https://www.imdb.com/name/nm9506859">
-        <span class="arrow">&#9658;</span>
-        <span class="label">IMDb</span>
-        <span class="go">GO&nbsp;&#8250;</span>
-      </a>
-    </li>
-  </ul>
+  <!-- ===================== FILM ===================== -->
+  <section class="work" aria-labelledby="film">
+    <h2 class="sect" id="film">&gt;&gt;&gt; FILM &lt;&lt;&lt;</h2>
+
+    <p class="lede">Eight pieces, 2015 to 2023. Seven made with <strong>CinemaRaven</strong>,
+      where I was assistant director from 2014 to 2018. The roles move around a lot, which is the
+      honest picture of small-crew film work: you write it, then you are in it, then you are
+      holding the puppet for someone else's. Newest first.</p>
+
+    <ul class="menu film">
+      <li>
+        <a href="https://www.youtube.com/watch?v=Gtao4yNVB8g">
+          <span class="arrow">&#9658;</span>
+          <span class="label">A Second Shift<span class="role">Actor &middot; Writer</span></span>
+          <span class="stats"><span class="yr">2023 &middot; 7:50</span><span class="views">595 views</span></span>
+          <span class="platform">YOUTUBE</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://vimeo.com/247854780">
+          <span class="arrow">&#9658;</span>
+          <span class="label">The Only Order<span class="role">Actor &middot; Writer &middot; Producer &mdash; narrative short</span></span>
+          <span class="stats"><span class="yr">2017 &middot; 14:47</span><span class="views">274 views</span></span>
+          <span class="platform">VIMEO</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=B9LyXIt8i7U">
+          <span class="arrow">&#9658;</span>
+          <span class="label">Why do marshmallows always turn to the dark side?<span class="role">Writer</span></span>
+          <span class="stats"><span class="yr">2017 &middot; 0:18</span><span class="views">35.2K views</span></span>
+          <span class="platform">YOUTUBE</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://vimeo.com/176195913">
+          <span class="arrow">&#9658;</span>
+          <span class="label">The Tale of the Leaky Engine and the Sloppy Troll<span class="role">Actor &middot; Writer &middot; Producer &mdash; 48 Hour Film Fest</span></span>
+          <span class="stats"><span class="yr">2016 &middot; 6:21</span><span class="views">134 views</span></span>
+          <span class="platform">VIMEO</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=oRcZZwbbHIE">
+          <span class="arrow">&#9658;</span>
+          <span class="label">The Defense of Sir Bedivere<span class="role">Actor &middot; Writer</span></span>
+          <span class="stats"><span class="yr">2016 &middot; 1:11</span><span class="views">2.9K views</span></span>
+          <span class="platform">YOUTUBE</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=7DTgU96cNpk">
+          <span class="arrow">&#9658;</span>
+          <span class="label">Lady Liberty Lager<span class="role">Actor &middot; Writer</span></span>
+          <span class="stats"><span class="yr">2015 &middot; 2:16</span><span class="views">5.6K views</span></span>
+          <span class="platform">YOUTUBE</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=bpk1RwswDKk">
+          <span class="arrow">&#9658;</span>
+          <span class="label">Ivory Drive &mdash; &ldquo;In Dark&rdquo;, official music video<span class="role">Puppeteer &middot; Assistant Camera</span></span>
+          <span class="stats"><span class="yr">2015 &middot; 3:48</span><span class="views">3.2K views</span></span>
+          <span class="platform">YOUTUBE</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=NuPLapwY44Q">
+          <span class="arrow">&#9658;</span>
+          <span class="label">Snacking with Homer Simpson<span class="role">Actor &middot; Producer</span></span>
+          <span class="stats"><span class="yr">2015 &middot; 0:09</span><span class="views">5.9M views</span></span>
+          <span class="platform">YOUTUBE</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Big numbers rounded on purpose: exact counts rot the day after they are
+         written and a static page cannot refresh them, so 5.9M stays true far
+         longer than 5,907,965. Small ones are exact because rounding them would
+         lose more than it saves. -->
+    <p class="asof">View counts as of 29 July 2026</p>
+
+    <ul class="menu">
+      <li>
+        <a href="https://www.imdb.com/name/nm9506859">
+          <span class="arrow">&#9658;</span>
+          <span class="label">IMDb</span>
+          <span class="go">GO&nbsp;&#8250;</span>
+        </a>
+      </li>
+    </ul>
+  </section>
 
   <hr class="rule">
 
   <div class="panel">
-    <p><strong>Why these are links and not embedded players.</strong> A YouTube embed sets
+    <p><strong>Why the films are links and not embedded players.</strong> A YouTube embed sets
       cookies and reports you to Google the moment the page loads, whether or not you press
       play. The footer on this site says <span class="mono">NO TRACKERS</span>, so filling this
-      page with them would have made that a lie. Nothing loads from anyone else's
-      server until you choose to go there.</p>
+      page with them would have made that a lie. Nothing loads from anyone else's server until
+      you choose to go there.</p>
+  </div>
+
+  <div class="construction">
+    <div class="barricade" role="presentation"></div>
+    <p>MORE TO COME &mdash; this page grows as the work does.</p>
+    <div class="barricade" role="presentation"></div>
   </div>
 
   <hr class="rule">
