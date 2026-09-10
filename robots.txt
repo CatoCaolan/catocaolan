@@ -1,0 +1,12 @@
+# catocaolan.com
+# Everything on this site is meant to be found, with one exception.
+#
+# /haskell-preview/ is an unlinked draft of a client's site, put here so it can
+# be shown on a phone before her own domain exists. It carries prices she has
+# not yet confirmed, so it must not become a search result with her name on it.
+# The page also sends noindex,nofollow in its own <head> - this file is the
+# second lock, not the only one, because a Disallow stops crawling but does not
+# by itself stop indexing of a URL discovered elsewhere.
+User-agent: *
+Allow: /
+Disallow: /haskell-preview/
