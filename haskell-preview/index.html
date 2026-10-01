@@ -108,12 +108,12 @@
          while the Acuity calendar itself is on screen. Without JS it simply stays. --- */
   .stick{display:none}
   @media (max-width:40rem){
-    .stick{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:.6rem;
-      padding:.6rem .9rem calc(.6rem + env(safe-area-inset-bottom));
+    .stick{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:.5rem;
+      padding:.45rem .75rem;
       background:var(--accent);border-top:1px solid rgba(255,255,255,.25)}
-    .stick a{flex:1;text-align:center;padding:.85rem .5rem;font-size:1.05rem;min-height:3rem}
+    .stick a{flex:1;text-align:center;padding:.55rem .5rem;font-size:1rem;min-height:2.75rem;line-height:1.5}
     .stick[hidden]{display:none}
-    body{padding-bottom:5.2rem}
+    body{padding-bottom:4rem}
   }
 
   footer{background:var(--accent-dark);color:#fff;padding:2.2rem 0;margin-top:2rem;font-size:1rem}
@@ -476,12 +476,20 @@
   <a class="btn" href="sms:+14138249194">Text</a>
 </div>
 <script>
-  // Hide the sticky bar while the booking calendar itself is on screen. If this
-  // does not run, the bar simply stays, which is still correct.
+  // Hide the sticky bar while either the hero booking bar or the calendar itself is
+  // on screen: at the top of the page the big Book button already does the job.
+  // If this does not run, the bar simply stays, which is still correct.
   (function(){
-    var bar=document.getElementById('stick'),cal=document.getElementById('acuity');
-    if(!bar||!cal||!('IntersectionObserver' in window))return;
-    new IntersectionObserver(function(e){bar.hidden=e[0].isIntersecting;}).observe(cal);
+    var bar=document.getElementById('stick');
+    if(!bar||!('IntersectionObserver' in window))return;
+    var seen={},targets=[document.querySelector('.book-bar'),document.getElementById('acuity'),
+                         document.getElementById('booking-stub')].filter(Boolean);
+    if(!targets.length)return;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){seen[e.target.id||e.target.className]=e.isIntersecting;});
+      bar.hidden=Object.keys(seen).some(function(k){return seen[k];});
+    });
+    targets.forEach(function(t){io.observe(t);});
   })();
 </script>
 
