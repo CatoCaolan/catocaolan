@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Massage Therapy in Brattleboro, VT | Virginia Haskell</title>
+<title>Knot Kidding Massage | Virginia Haskell, Brattleboro VT</title>
 <meta name="description" content="Therapeutic massage and Reiki in Brattleboro, Vermont. Swedish massage, myofascial release, and stretching to address pain and tension. 192 Putney Road. Book online.">
 
 <!-- Open Graph: controls how the link looks when shared on Facebook, where most of her traffic comes from -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Virginia Haskell, Massage Therapist — Brattleboro, VT">
+<meta property="og:title" content="Knot Kidding Massage — Virginia Haskell, Brattleboro VT">
 <meta property="og:description" content="Therapeutic massage and Reiki in Brattleboro, Vermont. Book online.">
 <meta property="og:image" content="images/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -62,7 +62,8 @@
     min-height:3rem;
   }
   .btn:hover{background:var(--accent-dark);color:#fff}
-  .btn:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+  /* amber focus ring is 2.2:1 against the green bars; white reads there */
+  .btn:focus-visible{outline:4px solid #fff;outline-offset:3px}
   .book-bar .alt{display:block;margin:.9rem 0 0;color:#fff;font-size:1rem;opacity:.95}
   .book-bar .alt a{color:#fff}
 
@@ -102,6 +103,19 @@
   .sched{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
   .sched iframe{width:100%;height:800px;border:0;display:block}
 
+  /* --- phone-only sticky bar: Book and Text stay reachable from anywhere on an
+         11,000 px page. Hidden on wide screens, and hidden by a few lines of JS
+         while the Acuity calendar itself is on screen. Without JS it simply stays. --- */
+  .stick{display:none}
+  @media (max-width:40rem){
+    .stick{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:.6rem;
+      padding:.6rem .9rem calc(.6rem + env(safe-area-inset-bottom));
+      background:var(--accent);border-top:1px solid rgba(255,255,255,.25)}
+    .stick a{flex:1;text-align:center;padding:.85rem .5rem;font-size:1.05rem;min-height:3rem}
+    .stick[hidden]{display:none}
+    body{padding-bottom:5.2rem}
+  }
+
   footer{background:var(--accent-dark);color:#fff;padding:2.2rem 0;margin-top:2rem;font-size:1rem}
   footer p{color:#fff;opacity:.9;margin:0 0 .5rem}
   footer a{color:#fff}
@@ -111,7 +125,8 @@
   .nav{background:var(--card);border-bottom:1px solid var(--line);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:1rem}
   .nav ul{list-style:none;margin:0 auto;padding:.85rem 1.35rem;max-width:46rem;
     display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;justify-content:center}
-  .nav a{color:var(--accent-dark);text-decoration:none;padding:.25rem 0;display:inline-block}
+  /* .6rem vertical padding lifts each link past the 44 px touch-target floor */
+  .nav a{color:var(--accent-dark);text-decoration:none;padding:.6rem .2rem;display:inline-block}
   .nav a:hover{text-decoration:underline}
   .nav a:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
 
@@ -173,8 +188,8 @@
 
 <header>
   <div class="wrap">
-    <h1>Virginia Haskell</h1>
-    <p class="tag">Massage Therapist &amp; Reiki Practitioner</p>
+    <h1>Knot Kidding Massage</h1>
+    <p class="tag">Virginia Haskell &middot; Massage Therapist &amp; Reiki Practitioner</p>
     <p class="where">Brattleboro, Vermont</p>
   </div>
 </header>
@@ -244,6 +259,16 @@
         <div class="rate"><span class="len">60 minutes</span><span class="amt">$100</span></div>
         <div class="rate"><span class="len">90 minutes</span><span class="amt">$125</span></div>
         <div class="rate"><span class="len">120 minutes</span><span class="amt">$150</span></div>
+      </div>
+    </div>
+
+    <div class="svc">
+      <h3>Hot stone massage</h3>
+      <p>Heated basalt stones, used alongside the hands, to warm and loosen tight muscle before
+        and during the work. Especially welcome in a Vermont winter.</p>
+      <div class="rates">
+        <div class="rate"><span class="len">60 minutes</span><span class="amt">$100</span></div>
+        <div class="rate"><span class="len">90 minutes</span><span class="amt">$125</span></div>
       </div>
     </div>
 
@@ -446,12 +471,26 @@
 </div>
 </main>
 
+<div class="stick" id="stick">
+  <a class="btn" href="#booking-stub">Book</a>
+  <a class="btn" href="sms:+14138249194">Text</a>
+</div>
+<script>
+  // Hide the sticky bar while the booking calendar itself is on screen. If this
+  // does not run, the bar simply stays, which is still correct.
+  (function(){
+    var bar=document.getElementById('stick'),cal=document.getElementById('acuity');
+    if(!bar||!cal||!('IntersectionObserver' in window))return;
+    new IntersectionObserver(function(e){bar.hidden=e[0].isIntersecting;}).observe(cal);
+  })();
+</script>
+
 <footer>
   <div class="wrap">
-    <p><strong>Virginia Haskell, Massage Therapist</strong><br>
+    <p><strong>Knot Kidding Massage &middot; Virginia Haskell</strong><br>
       192 Putney Road, Brattleboro, VT 05301<br>
       <a href="sms:+14138249194">(413) 824-9194</a></p>
-    <p>&copy; 2026 Virginia Haskell</p>
+    <p>&copy; 2026 Virginia Haskell &middot; Knot Kidding Massage</p>
   </div>
 </footer>
 
