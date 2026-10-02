@@ -10,3 +10,6 @@
 User-agent: *
 Allow: /
 Disallow: /haskell-preview/
+# /corner/ is the 1998 version of the home page, kept as an easter egg. It
+# carries noindex in its own head; this keeps it out of crawls too.
+Disallow: /corner/
