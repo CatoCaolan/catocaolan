@@ -13,3 +13,6 @@ Disallow: /haskell-preview/
 # /corner/ is the 1998 version of the home page, kept as an easter egg. It
 # carries noindex in its own head; this keeps it out of crawls too.
 Disallow: /corner/
+# /start/ is the Orchestration Starter Kit intake form, unlinked, for people
+# the owner sends there by hand. It carries noindex in its own head.
+Disallow: /start/

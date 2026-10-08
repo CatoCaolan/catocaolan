@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before You Start</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{
+    --bg:#faf8f5; --panel:#fff; --ink:#1b1a18; --muted:#6a655e;
+    --line:#ddd6cc; --accent:#8a5a2b; --accent-soft:#f2e9dd; --field:#fffdfa;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14130f; --panel:#1c1b17; --ink:#efece6; --muted:#a09a90;
+      --line:#34322b; --accent:#d29a5e; --accent-soft:#2a251d; --field:#100f0c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14130f; --panel:#1c1b17; --ink:#efece6; --muted:#a09a90;
+    --line:#34322b; --accent:#d29a5e; --accent-soft:#2a251d; --field:#100f0c;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.55 ui-serif, Georgia, "Iowan Old Style", serif;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:40px 16px 80px}
+  header{border-bottom:2px solid var(--line); padding-bottom:22px; margin-bottom:26px}
+  h1{font-size:30px; margin:0 0 10px; letter-spacing:-.01em}
+  .sub{color:var(--muted); font-size:15px; margin:0}
+  .rule{
+    background:var(--accent-soft); border-left:3px solid var(--accent);
+    padding:14px 16px; margin:20px 0; font-size:15px;
+  }
+  .rule b{color:var(--accent)}
+  section{
+    background:var(--panel); border:1px solid var(--line); border-radius:8px;
+    padding:20px 22px; margin:0 0 18px;
+  }
+  h2{
+    font-size:13px; text-transform:uppercase; letter-spacing:.09em;
+    color:var(--accent); margin:0 0 16px;
+  }
+  .q{margin:0 0 20px}
+  .q:last-child{margin-bottom:0}
+  label{display:block; font-weight:600; margin-bottom:5px}
+  .hint{display:block; color:var(--muted); font-size:14px; font-weight:400; margin-bottom:7px}
+  input[type=text], textarea{
+    width:100%; background:var(--field); color:var(--ink);
+    border:1px solid var(--line); border-radius:5px; padding:9px 11px;
+    font:15px/1.5 ui-sans-serif, system-ui, sans-serif; resize:vertical;
+  }
+  input[type=text]:focus, textarea:focus{outline:2px solid var(--accent); outline-offset:1px}
+  textarea{min-height:64px}
+  .choices{display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:4px}
+  .choices label{font-weight:400; display:flex; align-items:center; gap:6px; margin:0}
+  .names{display:grid; grid-template-columns:repeat(3,1fr); gap:9px}
+  @media (max-width:560px){ .names{grid-template-columns:1fr 1fr} }
+  .words{display:flex; flex-wrap:wrap; gap:7px 14px; margin-top:6px}
+  .words label{font-weight:400; display:flex; align-items:center; gap:5px; font-size:15px; margin:0}
+  .know{background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px 22px; margin:0 0 18px}
+  .know h2{margin-bottom:6px}
+  .know p.lead{color:var(--muted); font-size:14px; font-style:italic; margin:0 0 16px}
+  .know dl{margin:0}
+  .know dt{font-weight:600; margin-top:14px}
+  .know dt:first-of-type{margin-top:0}
+  .know dd{margin:3px 0 0; color:var(--muted); font-size:15px}
+  .bar{
+    position:sticky; bottom:0; background:var(--panel); border-top:1px solid var(--line);
+    padding:14px 16px; margin:26px -16px -80px; display:flex; gap:10px; align-items:center;
+    flex-wrap:wrap;
+  }
+  button{
+    background:var(--accent); color:#fff; border:0; border-radius:6px;
+    padding:10px 18px; font:600 15px ui-sans-serif, system-ui, sans-serif; cursor:pointer;
+  }
+  button.ghost{background:transparent; color:var(--accent); border:1px solid var(--accent)}
+  .status{color:var(--muted); font-size:14px}
+  footer{color:var(--muted); font-size:13px; margin-top:26px; border-top:1px solid var(--line); padding-top:16px}
+  body.editing [contenteditable]{
+    outline:1px dashed var(--accent); outline-offset:3px; border-radius:2px;
+  }
+  body.editing [contenteditable]:focus{
+    outline:2px solid var(--accent); background:var(--accent-soft);
+  }
+  body.editing .editnote{display:block}
+  .saved{color:var(--accent); font-size:13px; margin-left:4px}
+  .editnote{display:none; background:var(--accent-soft); border-left:3px solid var(--accent);
+    padding:12px 16px; margin:20px 0; font-size:15px}
+  @media print{
+    .bar{display:none} body{background:#fff} section,.know{break-inside:avoid; border-color:#bbb}
+  }
+  .outpanel{max-width:760px;margin:0 auto 20px;padding:0 16px}
+  .outpanel textarea{width:100%;box-sizing:border-box;font:13px/1.45 ui-monospace,Consolas,monospace;background:var(--field);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Before you start</h1>
+  <p class="sub">Fill this in before you open your first session with the Orchestration Starter Kit. Fifteen minutes. Nothing is sent anywhere. At the end, press <b>Copy answers</b> and paste the result into your first session.</p>
+</header>
+
+<div class="rule">
+  <b>"I don't know yet" is a complete answer.</b> So are "none" and "not applicable". Write one and move on.
+</div>
+
+<section>
+  <h2>1. The work</h2>
+
+  <div class="q">
+    <label for="firsttask">Name one small real thing you need done.</label>
+    <span class="hint">e.g. an email you owe someone, a one page summary of something you already have, a document you have been putting off. Real, not a test: you will do this one with the agent at the end of setup.</span>
+    <textarea id="firsttask" data-q="First real task"></textarea>
+  </div>
+
+  <div class="q">
+    <label for="project">What is the project, in one paragraph?</label>
+    <span class="hint">Plain words. Assume the reader knows nothing about your field.</span>
+    <textarea id="project" data-q="The project in one paragraph"></textarea>
+  </div>
+
+  <div class="q">
+    <label for="goal">If this works, what is different for you in a month?</label>
+    <span class="hint">A rough answer is fine.</span>
+    <textarea id="goal" data-q="What is different in a month"></textarea>
+  </div>
+</section>
+
+<section>
+  <h2>2. Where it lives</h2>
+
+  <div class="q">
+    <label for="path">Which folder on your computer will this live in?</label>
+    <span class="hint">Needs to be: somewhere permanent, not a temp folder, not already full of other files, and ideally without apostrophes or spaces in the path.</span>
+    <input type="text" id="path" data-q="Folder path" placeholder="C:\Users\you\my-project  or  ~/my-project">
+  </div>
+
+  <div class="q">
+    <label>Is that folder backed up, or synced to a cloud drive?</label>
+    <div class="choices">
+      <label><input type="radio" name="backup" value="Backed up"> Backed up</label>
+      <label><input type="radio" name="backup" value="Synced to a cloud drive"> Synced to cloud</label>
+      <label><input type="radio" name="backup" value="Neither"> Neither</label>
+      <label><input type="radio" name="backup" value="Don't know"> Don't know</label>
+    </div>
+  </div>
+
+  <div class="q">
+    <label for="tool">Which program will you run the agent in?</label>
+    <span class="hint">A desktop app, a terminal, an editor extension.</span>
+    <input type="text" id="tool" data-q="Program" placeholder="e.g. the desktop app, or a terminal">
+  </div>
+
+  <div class="q">
+    <label>Can that program start helper agents of its own?</label>
+    <span class="hint">Some programs hand a job to a separate worker with its own memory; others run everything in one conversation.</span>
+    <div class="choices">
+      <label><input type="radio" name="dispatch" value="Yes"> Yes</label>
+      <label><input type="radio" name="dispatch" value="No"> No</label>
+      <label><input type="radio" name="dispatch" value="Don't know yet"> Don't know yet</label>
+    </div>
+  </div>
+
+  <div class="q">
+    <label>One setup for everything, or a separate copy per project?</label>
+    <span class="hint">One for everything is the default. Make a separate copy when a different client or employer's material must not sit in the same folder.</span>
+    <div class="choices">
+      <label><input type="radio" name="installs" value="One for everything"> One for everything</label>
+      <label><input type="radio" name="installs" value="A separate copy per project"> Separate copy per project</label>
+      <label><input type="radio" name="installs" value="Undecided"> Undecided</label>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>3. The walls</h2>
+
+  <div class="q">
+    <label for="noread">What is the agent not allowed to read?</label>
+    <textarea id="noread" data-q="Not allowed to read"></textarea>
+  </div>
+
+  <div class="q">
+    <label for="write">What may it write to?</label>
+    <span class="hint">Name the folders. Everywhere else stays read only.</span>
+    <textarea id="write" data-q="May write"></textarea>
+  </div>
+
+  <div class="q">
+    <label for="never">What must it never change or delete?</label>
+    <span class="hint">Name actual folders or files. This is the one to be specific about.</span>
+    <textarea id="never" data-q="Must never change or delete"></textarea>
+  </div>
+
+  <div class="q">
+    <label>Will anything made here be sent, posted or published?</label>
+    <div class="choices">
+      <label><input type="radio" name="outward" value="Yes"> Yes</label>
+      <label><input type="radio" name="outward" value="No"> No</label>
+      <label><input type="radio" name="outward" value="Not sure yet"> Not sure yet</label>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>4. Checking the work</h2>
+
+  <div class="q">
+    <label for="checking">How do you currently check work like this before it goes out?</label>
+    <span class="hint">Proofreading, a colleague who reads it, a fact check, a test you run, a checklist. Whatever you already do.</span>
+    <textarea id="checking" data-q="How I currently check work"></textarea>
+  </div>
+</section>
+
+<section>
+  <h2>5. How you work</h2>
+
+  <div class="q">
+    <label for="badsentence">Write one sentence you would not want to read from an agent.</label>
+    <span class="hint">The tone that makes you stop trusting the answer, in your own words.</span>
+    <textarea id="badsentence" data-q="A sentence I would not want to read"></textarea>
+  </div>
+
+  <div class="q">
+    <label>How do you want to be handed a decision? Tick as many as fit.</label>
+    <div class="choices">
+      <label><input type="checkbox" data-multi="handoff" value="Prose"> Prose</label>
+      <label><input type="checkbox" data-multi="handoff" value="Bullet points"> Bullet points</label>
+      <label><input type="checkbox" data-multi="handoff" value="Numbered questions, one at a time"> Numbered questions, one at a time</label>
+      <label><input type="checkbox" data-multi="handoff" value="A checklist I can tick"> A checklist I can tick</label>
+    </div>
+  </div>
+
+  <div class="q">
+    <label for="aboutme">Anything about you the agent should know, so it does not have to guess?</label>
+    <span class="hint">How you think, how you read, what you already know well.</span>
+    <textarea id="aboutme" data-q="About me"></textarea>
+  </div>
+</section>
+
+<section>
+  <h2>6. Names</h2>
+  <div class="q">
+    <label>Jot down names you like.</label>
+    <span class="hint">One rule: keep them clear of your subject matter, or the name collides with the vocabulary of the work. If your project is about bones, do not name one after a bone.</span>
+    <div class="names">
+      <input type="text" data-name="1" placeholder="name"><input type="text" data-name="2" placeholder="name"><input type="text" data-name="3" placeholder="name">
+      <input type="text" data-name="4" placeholder="name"><input type="text" data-name="5" placeholder="name"><input type="text" data-name="6" placeholder="name">
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>7. If you stop</h2>
+
+  <div class="q">
+    <label>How often do you expect to actually be in this?</label>
+    <div class="choices">
+      <label><input type="radio" name="cadence" value="Most days"> Most days</label>
+      <label><input type="radio" name="cadence" value="Weekly"> Weekly</label>
+      <label><input type="radio" name="cadence" value="Now and then"> Now and then</label>
+      <label><input type="radio" name="cadence" value="No idea"> No idea</label>
+    </div>
+  </div>
+
+  <div class="q">
+    <label>Are you likely to move this to a different computer?</label>
+    <span class="hint">The project folder copies across. Your conversation history with the agent generally does not.</span>
+    <div class="choices">
+      <label><input type="radio" name="newmachine" value="Yes"> Yes</label>
+      <label><input type="radio" name="newmachine" value="No"> No</label>
+      <label><input type="radio" name="newmachine" value="Maybe"> Maybe</label>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>8. Words</h2>
+  <div class="q">
+    <label>Tick anything you would rather have explained than assumed.</label>
+    <span class="hint">Nobody sees this but you and your agent.</span>
+    <div class="words">
+      <label><input type="checkbox" data-word="token"> token</label>
+      <label><input type="checkbox" data-word="context window"> context window</label>
+      <label><input type="checkbox" data-word="sub-agent"> sub-agent</label>
+      <label><input type="checkbox" data-word="dispatch"> dispatch</label>
+      <label><input type="checkbox" data-word="cold boot"> cold boot</label>
+      <label><input type="checkbox" data-word="skills folder"> skills folder</label>
+      <label><input type="checkbox" data-word="repository"> repository</label>
+      <label><input type="checkbox" data-word="commit"> commit</label>
+      <label><input type="checkbox" data-word="branch"> branch</label>
+      <label><input type="checkbox" data-word="merge"> merge</label>
+      <label><input type="checkbox" data-word="linter"> linter</label>
+      <label><input type="checkbox" data-word="model tier"> model tier</label>
+      <label><input type="checkbox" data-word="permission mode"> permission mode</label>
+      <label><input type="checkbox" data-word="MCP"> MCP</label>
+    </div>
+  </div>
+  <div class="q">
+    <label for="otherwords">Anything else you would like defined?</label>
+    <input type="text" id="otherwords" data-q="Other words to define">
+  </div>
+</section>
+
+<div class="know">
+  <h2>Worth knowing before you open the session</h2>
+  <p class="lead">Nothing to fill in here. Six things that cost other people time.</p>
+  <dl>
+    <dt>You can stop at any point, for no stated reason.</dt>
+    <dd>Most people need more than one sitting; it picks up where you left off. Stopping is not failing.</dd>
+
+    <dt>Rewriting beats patching, for anything written.</dt>
+    <dd>Edits to a draft leave new sentences inside old structure, with the seams showing; ask for a fresh version with the new information instead. Code and records are the opposite: there the small change is the point.</dd>
+
+    <dt>The checks passing is not the same as the work being right.</dt>
+    <dd>In one test, a system produced a problem describing a situation that cannot physically happen, and all six of its own checks passed it. Read the first real batch yourself.</dd>
+
+    <dt>Anything committed to version control is permanent.</dt>
+    <dd>If you run <code>git init</code> in a folder that holds someone else's material, that material is in the history for good: deleting it later does not remove it, and publishing the project exposes the whole history. Check the folder first.</dd>
+
+    <dt>You are the one steering.</dt>
+    <dd>The risk is not the agent taking over; it is you approving work you have stopped reading. Waving things through is the signal to slow down.</dd>
+
+    <dt>An agent has no sense of time passing.</dt>
+    <dd>It does not know it is late or that you have been at this for four hours, and it will keep handing you work. The stopping rule has to be yours.</dd>
+  </dl>
+</div>
+
+<div class="editnote" id="editnote">
+  <b>Editing the wording.</b> Click any heading, question, hint or note and type. Answer boxes are switched off while you edit. It saves as you type. When you are done, press <b>Copy my changes</b> and paste them back to whoever keeps the form.
+</div>
+
+<div class="outpanel" id="outpanel" hidden>
+  <p class="lead">Your answers as plain text. Select all, copy, and send it on.</p>
+  <textarea id="outtext" rows="14" readonly></textarea>
+  <button class="ghost" id="hideout">Hide</button>
+</div>
+
+<div class="bar">
+  <span class="answermode">
+    <button id="copy">Copy answers</button>
+    <button class="ghost" id="save">Save as text file</button>
+    <button class="ghost" id="show">Show as text</button>
+    <button class="ghost" onclick="window.print()">Print</button>
+    <button class="ghost" id="clear">Clear answers</button>
+    <button class="ghost" id="edit">Edit the wording</button>
+  </span>
+  <span class="editmode" hidden>
+    <button id="copyedits">Copy my changes</button>
+    <button class="ghost" id="stopedit">Done editing</button>
+  </span>
+  <span class="status" id="status"></span>
+</div>
+
+<textarea id="outbox" hidden style="width:100%;min-height:200px;margin-top:12px"></textarea>
+
+<footer>
+  Draft, 2026-09-21. Nothing you type is stored or sent anywhere; it lives in this page until you close it.
+</footer>
+
+</div>
+
+<script>
+function collect(){
+  const out = [];
+  out.push("BEFORE YOU START: answers");
+  out.push("Filled in: " + new Date().toISOString().slice(0,10));
+  document.querySelectorAll("section").forEach(sec => {
+    const title = sec.querySelector("h2").textContent.trim();
+    const lines = [];
+    sec.querySelectorAll("[data-q]").forEach(el => {
+      const v = el.value.trim();
+      if (v) lines.push("  " + el.dataset.q + ": " + v);
+    });
+    sec.querySelectorAll("input[type=radio]:checked").forEach(el => {
+      const lbl = el.closest(".q").querySelector("label").textContent.trim();
+      lines.push("  " + lbl + " " + el.value);
+    });
+    const groups = {};
+    sec.querySelectorAll("[data-multi]:checked").forEach(el => {
+      const g = el.dataset.multi;
+      const lbl = el.closest(".q").querySelector("label").textContent.trim();
+      (groups[lbl] = groups[lbl] || []).push(el.value);
+    });
+    Object.keys(groups).forEach(k => lines.push("  " + k + " " + groups[k].join("; ")));
+    const names = [];
+    sec.querySelectorAll("[data-name]").forEach(el => { if (el.value.trim()) names.push(el.value.trim()); });
+    if (names.length) lines.push("  Names I like: " + names.join(", "));
+    const words = [];
+    sec.querySelectorAll("[data-word]").forEach(el => { if (el.checked) words.push(el.dataset.word); });
+    if (words.length) lines.push("  Please explain: " + words.join(", "));
+    if (lines.length) { out.push(""); out.push(title.toUpperCase()); out.push(...lines); }
+  });
+  out.push("");
+  out.push('Blank answers mean "not decided yet" and are fine.');
+  return out.join("\n");
+}
+function flash(msg){
+  const s = document.getElementById("status");
+  s.textContent = msg;
+  setTimeout(() => { s.textContent = ""; }, 2600);
+}
+document.getElementById("copy").addEventListener("click", async () => {
+  const text = collect();
+  try { await navigator.clipboard.writeText(text); flash("Copied. Paste it into your first session."); }
+  catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); flash("Copied."); } catch(_){ flash("Could not copy. Use Save instead."); }
+    ta.remove();
+  }
+});
+document.getElementById("save").addEventListener("click", async () => {
+  const text = collect();
+  const file = new File([text], "before-you-start.txt", {type:"text/plain"});
+  if (navigator.canShare && navigator.canShare({files:[file]})) {
+    try { await navigator.share({files:[file], title:"Before you start"}); flash("Shared."); return; }
+    catch(e){ if (e && e.name === "AbortError") return; }
+  }
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], {type:"text/plain"}));
+  a.download = "before-you-start.txt";
+  a.click();
+  URL.revokeObjectURL(a.href);
+  flash("Saved to your downloads. If nothing arrived, use Show as text.");
+});
+document.getElementById("show").addEventListener("click", () => {
+  const panel = document.getElementById("outpanel");
+  const ta = document.getElementById("outtext");
+  ta.value = collect();
+  panel.hidden = false;
+  ta.focus(); ta.select();
+  flash("Select all and copy, or send it from here.");
+});
+document.getElementById("hideout").addEventListener("click", () => { document.getElementById("outpanel").hidden = true; });
+
+/* ---- answers save as you type, so a closed tab keeps them ---- */
+const AKEY = "intake-form-answers-v1";
+function answerFields(){ return Array.from(document.querySelectorAll("section input, section textarea, section select")); }
+function fieldKey(el, i){ return el.id || el.name && (el.name + ":" + el.value) || ("f" + i); }
+function saveAnswers(){
+  const data = {};
+  answerFields().forEach((el, i) => {
+    const k = fieldKey(el, i);
+    data[k] = (el.type === "checkbox" || el.type === "radio") ? el.checked : el.value;
+  });
+  try { localStorage.setItem(AKEY, JSON.stringify(data)); } catch(e){}
+}
+function loadAnswers(){
+  let data = null;
+  try { data = JSON.parse(localStorage.getItem(AKEY) || "null"); } catch(e){}
+  if (!data) return false;
+  let any = false;
+  answerFields().forEach((el, i) => {
+    const k = fieldKey(el, i);
+    if (!(k in data)) return;
+    if (el.type === "checkbox" || el.type === "radio") { if (data[k]) { el.checked = true; any = true; } }
+    else if (data[k]) { el.value = data[k]; any = true; }
+  });
+  return any;
+}
+document.addEventListener("input", e => { if (!document.body.classList.contains("editing")) saveAnswers(); });
+document.addEventListener("change", e => { if (!document.body.classList.contains("editing")) saveAnswers(); });
+document.getElementById("clear").addEventListener("click", () => {
+  if (!confirm("Clear every answer on this page?")) return;
+  answerFields().forEach(el => { if (el.type === "checkbox" || el.type === "radio") el.checked = false; else el.value = ""; });
+  try { localStorage.removeItem(AKEY); } catch(e){}
+  flash("Cleared.");
+});
+if (loadAnswers()) flash("Your earlier answers are back.");
+
+/* ---- edit the wording ---- */
+const EDITABLE = [
+  "h1", "header .sub", ".rule", "section h2", ".q > label", ".hint",
+  ".know h2", ".know p.lead", ".know dt", ".know dd", "footer"
+];
+const KEY = "intake-form-wording-v1";
+let originals = new Map();
+
+function editables(){
+  const seen = new Set(), list = [];
+  EDITABLE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
+    if (el.closest(".bar") || el.closest(".editnote")) return;
+    if (el.querySelector("input, textarea")) return;   // never make a control's container editable
+    if (seen.has(el)) return;
+    seen.add(el); list.push(el);
+  }));
+  return list;
+}
+function tag(el){
+  const sec = el.closest("section, .know, header, footer, .rule");
+  const where = sec ? (sec.querySelector("h2, h1") || {}).textContent : "";
+  const what = el.className || el.tagName.toLowerCase();
+  return ((where || "page").trim() + " / " + what).trim();
+}
+function keyOf(i){ return "e" + i; }
+
+function snapshot(){
+  editables().forEach((el, i) => {
+    if (!originals.has(keyOf(i))) originals.set(keyOf(i), el.innerHTML);
+  });
+}
+function persist(){
+  const data = {};
+  editables().forEach((el, i) => { data[keyOf(i)] = el.innerHTML; });
+  try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e){}
+  const s = document.getElementById("status");
+  s.innerHTML = '<span class="saved">saved in this browser</span>';
+}
+function restore(){
+  let data = null;
+  try { data = JSON.parse(localStorage.getItem(KEY) || "null"); } catch(e){}
+  if (!data) return false;
+  let n = 0;
+  editables().forEach((el, i) => {
+    const v = data[keyOf(i)];
+    if (typeof v === "string" && v !== el.innerHTML) { el.innerHTML = v; n++; }
+  });
+  return n > 0;
+}
+function changes(){
+  const out = ["WORDING CHANGES", "Edited: " + new Date().toISOString().slice(0,10), ""];
+  let n = 0;
+  editables().forEach((el, i) => {
+    const before = originals.get(keyOf(i));
+    const after = el.innerHTML;
+    if (before === undefined || before.trim() === after.trim()) return;
+    n++;
+    out.push("--- " + tag(el));
+    out.push("WAS: " + before.replace(/\s+/g, " ").trim());
+    out.push("NOW: " + after.replace(/\s+/g, " ").trim());
+    out.push("");
+  });
+  if (!n) out.push("(no wording changed)");
+  return out.join("\n");
+}
+function setEditing(on){
+  document.body.classList.toggle("editing", on);
+  editables().forEach(el => {
+    if (on) el.setAttribute("contenteditable", "true"); else el.removeAttribute("contenteditable");
+  });
+  document.querySelectorAll("input, textarea").forEach(el => {
+    if (el.id === "outbox") return;
+    el.disabled = on;
+  });
+  document.querySelector(".answermode").hidden = on;
+  document.querySelector(".editmode").hidden = !on;
+}
+async function handOver(text, msg){
+  document.getElementById("status").textContent = "";
+  try {
+    await navigator.clipboard.writeText(text);
+    flash(msg);
+  } catch(e){
+    const box = document.getElementById("outbox");
+    box.value = text; box.hidden = false; box.focus(); box.select();
+    box.scrollIntoView({behavior:"smooth", block:"center"});
+    flash("Select all in the box below and copy.");
+  }
+}
+document.getElementById("edit").addEventListener("click", () => { snapshot(); setEditing(true); });
+document.getElementById("stopedit").addEventListener("click", () => setEditing(false));
+document.getElementById("copyedits").addEventListener("click", () => handOver(changes(), "Changes copied. Paste them back."));
+
+document.addEventListener("input", e => {
+  if (document.body.classList.contains("editing") && e.target.isContentEditable) persist();
+});
+window.addEventListener("beforeunload", e => {
+  if (document.body.classList.contains("editing")) { e.preventDefault(); e.returnValue = ""; }
+});
+snapshot();
+if (restore()) flash("Restored your earlier wording edits.");
+</script>
+</body>
+</html>
